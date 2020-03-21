@@ -10,17 +10,17 @@
 
             <div id="posts" class="posts-expand">
                 <header class="post-header">
-                    <h2 class="post-title" itemprop="name headline">tags</h2>
+                    <h2 class="post-title" itemprop="name headline">categorys</h2>
                 </header>
 
                 <div class="tag-cloud">
                     <div class="tag-cloud-title">
-                        目前共计 {{ category_num }} 个标签
+                        目前共计 {{ category_num }} 个分类
                     </div>
                     <div class="tag-cloud-tags">
 
                         {% for category in all_category %}
-                            <a href="#"
+                            <a href="{% url 'categoryDetail' category.name %}"
                                     {% if category.number <= 5 %}
                                style="font-size: 15px; color: #999"
                                     {% elif category.number <= 10 %}
