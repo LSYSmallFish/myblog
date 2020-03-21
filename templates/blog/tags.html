@@ -21,16 +21,12 @@
 
                         {% for tag in all_tag %}
                             <a href="#"
-                                    {% if tag.number <= 2 %}
-                               style="font-size: 12.5px; color: #999"
-                                    {% elif tag.number <= 5 %}
-                               style="font-size: 15px; color: #666"
+                                    {% if tag.number <= 5 %}
+                               style="font-size: 15px; color: #999"
                                     {% elif tag.number <= 10 %}
-                               style="font-size: 20px; color: #444"
+                               style="font-size: 20px; color: #666"
                                     {% elif tag.number <= 20 %}
-                               style="font-size: 25px; color: #222"
-                                    {% elif tag.number <= 50 %}
-                               style="font-size: 30px; color: #111"
+                               style="font-size: 25px; color: #444"
                                     {% else %}
                                style="font-size: 35px; color: #000"
                                     {% endif %}>

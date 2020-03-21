@@ -29,3 +29,13 @@ class TagView(View):
         res['all_tag'] = all_tag
         res['tags_num'] = tags_num
         return render(request, 'blog/tags.html', res)
+
+
+class CategoryView(View):
+    def get(self, request):
+        all_category = Category.objects.all()
+        category_num = Category.objects.all().count()
+        res = dict()
+        res['all_category'] = all_category
+        res['category_num'] = category_num
+        return render(request, 'blog/category.html', res)

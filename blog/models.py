@@ -1,4 +1,5 @@
 from django.db import models
+from django.dispatch import receiver
 from django.utils import timezone
 
 
@@ -8,7 +9,7 @@ class Category(models.Model):
     文章的分类
     """
     name = models.CharField(verbose_name='文章类别', max_length=20)
-
+    number=models.IntegerField(verbose_name='类别数量',default=0)
     class Meta:
         verbose_name = '文章类别'
         verbose_name_plural = verbose_name
@@ -22,7 +23,7 @@ class Tag(models.Model):
     文章标签
     """
     name = models.CharField(verbose_name='文章标签', max_length=20)
-
+    number = models.IntegerField(verbose_name='标签数量', default=0)
     class Meta:
         verbose_name = '文章标签'
         verbose_name_plural = verbose_name
