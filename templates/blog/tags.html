@@ -20,7 +20,7 @@
                     <div class="tag-cloud-tags">
 
                         {% for tag in all_tag %}
-                            <a href="#"
+                            <a href="{% url 'tagDetail' tag.name %}"
                                     {% if tag.number <= 5 %}
                                style="font-size: 15px; color: #999"
                                     {% elif tag.number <= 10 %}
