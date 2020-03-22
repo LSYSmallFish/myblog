@@ -9,7 +9,9 @@ body {
     margin: 0px;
     background-image: url("../image/banner1.jpg");
 }
-
+#cke_content{
+　　width: 100%；
+}
 article,
 aside,
 details,

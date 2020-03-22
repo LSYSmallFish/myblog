@@ -30,6 +30,7 @@
 
     <script src="{% static 'css_js/push.js' %}"></script>
     <script src="{% static 'css_js/hm.js' %}"></script>
+    <script src="{% static 'css_js/jquery-3.3.1.js' %}"></script>
     <script type="text/javascript" id="hexo.configurations">
         var NexT = window.NexT || {};
         var CONFIG = {
@@ -124,7 +125,7 @@
                             <i class="menu-item-icon fa fa-search"></i>
                         </a>
 
-                        <form action="http://www.geerniya.cn/search/">
+                        <form action="#">
                             <input id="unit" type="search" name="q" placeholder="搜索">
                         </form>
 
@@ -252,6 +253,8 @@
     })();
 </script>
 
+{% block script %}
 
+{% endblock %}
 </body>
 </html>

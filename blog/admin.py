@@ -1,10 +1,8 @@
 from django.contrib import admin
 from .models import Blog, Category, Tag
 
-# Register your models here.
 
-admin.site.register(Category)
-admin.site.register(Tag)
+# Register your models here.
 
 
 class BlogAdmin(admin.ModelAdmin):
@@ -40,4 +38,14 @@ class BlogAdmin(admin.ModelAdmin):
         obj.delete()
 
 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'number']
+
+
+class TagAdmin(admin.ModelAdmin):
+    list_display = ['name', 'number']
+
+
 admin.site.register(Blog, BlogAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Tag, TagAdmin)

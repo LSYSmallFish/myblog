@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from blog.views import IndexView, TagView,CategoryView,TagDetailView,CategoryDetailView,BlogDetailView
-
+from comment.views import AddCommet
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
@@ -25,4 +25,5 @@ urlpatterns = [
     path('tags/<tagDetail>', TagDetailView.as_view(), name='tagDetail'),
     path('category/<categoryDetail>', CategoryDetailView.as_view(), name='categoryDetail'),
     path('blog/<blogDetail>', BlogDetailView.as_view(), name='blogDetail'),
+    path('add_comment/<add_comment>', AddCommet.as_view(), name='add_comment'),
 ]

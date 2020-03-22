@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{ blog.title }}
+    {{ blog.title }}
 {% endblock %}
 
 {% block content %}
-<div class="content-wrap">
-    <div id="content" class="content">
-        <div id="posts" class="posts-expand">
-            <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
+    <div class="content-wrap">
+        <div id="content" class="content">
+            <div id="posts" class="posts-expand">
+                <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article"
+                         style="opacity: 1; display: block; transform: translateY(0px);">
 
-            <header class="post-header">
+                    <header class="post-header">
+                        <h1 class="post-title" itemprop="name headline">{{ blog.title }}</h1>
 
-                <h1 class="post-title" itemprop="name headline">{{ blog.title }}</h1>
-
-                <div class="post-meta">
+                        <div class="post-meta">
                     <span class="post-time">
                         <span class="post-meta-item-icon">
                             <i class="fa fa-calendar-o"></i>
@@ -25,7 +25,7 @@
                         </time>
                   </span>
 
-                    <span class="post-category">
+                            <span class="post-category">
 
                         <span class="post-meta-divider">|</span>
                         <span class="post-meta-item-icon">
@@ -39,7 +39,7 @@
                         </span>
                     </span>
 
-                    <span class="post-comments-count">
+                            <span class="post-comments-count">
                         <span class="post-meta-divider">|</span>
                         <span class="post-meta-item-icon">
                             <i class="fa fa-comment-o"></i>
@@ -49,68 +49,113 @@
                         </a>
                     </span>
 
-                </div>
-            </header>
+                        </div>
+                    </header>
 
-            <div class="post-body" itemprop="articleBody">
+                    <div class="post-body" itemprop="articleBody">
 
-                {{ blog.content|safe }}
+                        {{ blog.content|safe }}
 
+                    </div>
+
+
+                    <footer class="post-footer">
+
+
+                        <div class="post-tags">
+                            {% for blog_tag in blog.tag.all %}
+                                <a href="{% url 'tagDetail' blog_tag.name %}" rel="tag"># {{ blog_tag.name }}</a>
+                            {% endfor %}
+                        </div>
+
+
+                        <div class="post-nav">
+                            <div class="post-nav-next post-nav-item">
+
+
+                                {% if has_prev %}
+                                    <a href="{% url 'blogDetail' blog_prev.id %}" rel="prev"
+                                       title="{{ blog_prev.title }}">
+                                        <i class="fa fa-chevron-left"></i> {{ blog_prev.title }}
+                                    </a>
+                                {% endif %}
+
+
+                            </div>
+
+                            <span class="post-nav-divider"></span>
+
+                            <div class="post-nav-prev post-nav-item">
+
+                                {% if has_next %}
+                                    <a href="{% url 'blogDetail' blog_next.id %}" rel="next"
+                                       title="{{ blog_next.title }}">
+                                        {{ blog_next.title }} <i class="fa fa-chevron-right"></i>
+                                    </a>
+                                {% endif %}
+
+
+                            </div>
+                        </div>
+
+                    </footer>
+
+                </article>
             </div>
 
-
-
-            <footer class="post-footer">
-
-
-{#                    <div class="post-tags">#}
-{#                    {% for blog_tag in blog.tag.all %}#}
-{#                        <a href="{% url 'tag_name' blog_tag.name %}" rel="tag"># {{ blog_tag.name }}</a>#}
-{#                    {% endfor %}#}
-{#                    </div>#}
-
-
-
-
-
-                <div class="post-nav">
-                    <div class="post-nav-next post-nav-item">
-
-
-                        {% if has_prev %}
-                            <a href="{% url 'blogDetail' blog_prev.id %}" rel="prev" title="{{ blog_prev.title }}">
-                                <i class="fa fa-chevron-left"></i> {{ blog_prev.title }}
-                            </a>
-                        {% endif %}
-
-
-                    </div>
-
-                    <span class="post-nav-divider"></span>
-
-                    <div class="post-nav-prev post-nav-item">
-
-                        {% if has_next %}
-                             <a href="{% url 'blogDetail' blog_next.id %}" rel="next" title="{{ blog_next.title }}">
-                                {{ blog_next.title }} <i class="fa fa-chevron-right"></i>
-                             </a>
-                        {% endif %}
-
-
-                    </div>
-                </div>
-
-            </footer>
-
-            </article>
+            <div class="post-spread"></div>
         </div>
-
-        <div class="post-spread"></div>
     </div>
-</div>
+    <div class="content-wrap-comment">
+        <div id="comment"></div>
+
+        <h2 class="comment-add">发表评论</h2>
+
+        <form class="comment-form" id="jsStayForm" action="{% url 'add_comment' blog.id %}" method="POST">
+            <div class="form-group">
+                <label class="name">名字:  </label>
+                <input name="name" type="text" class="form-name" id="js-name" placeholder="不超过20个字">
+            </div>
+            {% csrf_token %}
+            {{ comment_form.media }}
+            {{ comment_form.content }}
+            <input name="blog" type="hidden" id="js-name" value="{{ blog.id }}">
+            <br>
+            <button class="btn" type="submit" id="jsStayBtn" value="发表" style="background-color: #00B0E8">发表</button>
+        </form>
+        <div class="#">
+        <h3 class="comment-list-title">共 <span>{{ comment_nums }}</span> 条评论</h3>
+        <ul class="comment-list">
+
+            {% for comment in all_comment %}
+                <li class="comment-item">
+                <hr class="the-line"  />
+                    <span class="nickname">{{ comment.name }} - </span>
+                    <time class="submit-date"
+                          datetime="{{ comment.create_time }}">{{ comment.create_time|date:"Y/m/d   h:m" }}</time>
+                    <p class="floor">{{ forloop.counter }} #  </p>
+                    <div style="word-wrap: break-word">
+                            {{ comment.content|safe }}
+                    </div>
+
+                </li>
+            {% empty %}
+                暂无评论
+            {% endfor %}
+
+        </ul>
+        </div>
+    </div>
 
 {% endblock %}
 
+{% block script %}
+<script>
+    $(".django-ckeditor-widget").removeAttr('style');
+
+</script>
+
+{% endblock %}
 
 
 
