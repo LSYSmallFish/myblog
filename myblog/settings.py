@@ -158,7 +158,27 @@ CKEDITOR_CONFIGS = {
         'extraPlugins': ','.join(['codesnippet']),
     }
 }
-import dj_database_url
+# import dj_database_url
+#
+# prod_db = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(prod_db)
 
-prod_db = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+# heroku设置
+cwd = os.getcwd()  # 获取当前的工作目录
+# 确保这个设置文件在本地和在线都能使用，只有部署到kuroku才会执行if
+if cwd == '/app' or cwd[:4] == '/tmp':
+    import dj_database_url
+
+    prod_db = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(prod_db)
+
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    ALLOWED_HOSTS = ['*']  # 支持所有的主机头
+    # 静态资产配置
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT = 'staticfiles'
+    STATIC_URL = '/static/'
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static'),
+    )
