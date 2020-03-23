@@ -29,5 +29,5 @@ urlpatterns = [
     path('category/<categoryDetail>', CategoryDetailView.as_view(), name='categoryDetail'),
     path('blog/<blogDetail>', BlogDetailView.as_view(), name='blogDetail'),
     path('add_comment/<add_comment>', AddCommet.as_view(), name='add_comment'),
-    url(r'static/(?P<path>.*)$', static.serve, {'document_root': settings.STATIC_ROOT}, name='static'),
+    # url(r'static/(?P<path>.*)$', static.serve, {'document_root': settings.STATIC_ROOT}, name='static'),
 ]
