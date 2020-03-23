@@ -18,7 +18,7 @@ class IndexView(View):
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
             page = 1
-        p = Paginator(all_blog, 1, request=request)
+        p = Paginator(all_blog, 3, request=request)
         blogs = p.page(page)
         for blog in all_blog:
             blog.content = markdown.markdown(blog.content)
@@ -56,7 +56,7 @@ class TagDetailView(View):
         except PageNotAnInteger:
             page = 1
 
-        p = Paginator(tag_blogs, 1, request=request)
+        p = Paginator(tag_blogs, 3, request=request)
         tag_blogs = p.page(page)
         res['tag_blogs'] = tag_blogs
         res['tag_name'] = tagDetail
@@ -73,7 +73,7 @@ class CategoryDetailView(View):
         except PageNotAnInteger:
             page = 1
 
-        p = Paginator(category_blogs, 1, request=request)
+        p = Paginator(category_blogs, 3, request=request)
         category_blogs = p.page(page)
         res['category_blogs'] = category_blogs
         res['category_name'] = categoryDetail
