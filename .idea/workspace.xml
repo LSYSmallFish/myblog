@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03034377-6a92-4697-b4f7-0c3498785c56" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="03034377-6a92-4697-b4f7-0c3498785c56" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,8 +103,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myblog/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="122" column="20" lean-forward="true" selection-start-line="122" selection-start-column="20" selection-end-line="122" selection-end-column="20" />
+            <state relative-caret-position="198">
+              <caret line="120" column="14" lean-forward="true" selection-start-line="120" selection-start-column="14" selection-end-line="120" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -115,7 +113,7 @@
         <entry file="file://$PROJECT_DIR$/myblog/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="335">
-              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
               <folding>
                 <element signature="e#630#662#0" expanded="true" />
               </folding>
@@ -185,8 +183,8 @@
         <option value="$PROJECT_DIR$/templates/blog/blogDetail.html" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/myblog/wsgi.py" />
-        <option value="$PROJECT_DIR$/myblog/settings.py" />
         <option value="$PROJECT_DIR$/myblog/urls.py" />
+        <option value="$PROJECT_DIR$/myblog/settings.py" />
       </list>
     </option>
   </component>
@@ -224,6 +222,12 @@
               <item name="myblog" type="b2602c69:ProjectViewProjectNode" />
               <item name="myblog" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myblog" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="myblog" type="b2602c69:ProjectViewProjectNode" />
@@ -307,7 +311,7 @@
       <option name="presentableId" value="Default" />
       <updated>1584606883619</updated>
       <workItem from="1584606997072" duration="50929000" />
-      <workItem from="1584891769723" duration="7079000" />
+      <workItem from="1584891769723" duration="7421000" />
     </task>
     <task id="LOCAL-00001" summary="博客首页展示">
       <created>1584696839577</created>
@@ -369,7 +373,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58008000" />
+    <option name="totallyTimeSpent" value="58350000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -608,7 +612,7 @@
     <entry file="file://$PROJECT_DIR$/myblog/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="e#630#662#0" expanded="true" />
           </folding>
@@ -617,8 +621,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="122" column="20" lean-forward="true" selection-start-line="122" selection-start-column="20" selection-end-line="122" selection-end-column="20" />
+        <state relative-caret-position="198">
+          <caret line="120" column="14" lean-forward="true" selection-start-line="120" selection-start-column="14" selection-end-line="120" selection-end-column="14" />
         </state>
       </provider>
     </entry>
