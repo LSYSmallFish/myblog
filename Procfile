@@ -1,0 +1,1 @@
+web: gunicorn smallfishblog.wsgi --log-file -
