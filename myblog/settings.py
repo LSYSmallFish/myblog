@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_hh*1470=_xq#f(dit&9w2y&7u284ag58nr%g0cxm$3zc2giv+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -118,10 +118,10 @@ USE_L10N = True
 USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+STATIC_ROOT=os.path.join(BASE_DIR,"/static/")#正确
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "/static/")
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "/static/")
+    os.path.join(BASE_DIR, 'static')
 ]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 PAGINATION_SETTINGS = {
@@ -158,27 +158,9 @@ CKEDITOR_CONFIGS = {
         'extraPlugins': ','.join(['codesnippet']),
     }
 }
-# import dj_database_url
-#
-# prod_db = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(prod_db)
+import dj_database_url
+
+prod_db = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
 
 # heroku设置
-cwd = os.getcwd()  # 获取当前的工作目录
-# 确保这个设置文件在本地和在线都能使用，只有部署到kuroku才会执行if
-if cwd == '/app' or cwd[:4] == '/tmp':
-    import dj_database_url
-
-    prod_db = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(prod_db)
-
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-    ALLOWED_HOSTS = ['*']  # 支持所有的主机头
-    # 静态资产配置
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = 'static'
-    STATIC_URL = '/static/'
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-    )
