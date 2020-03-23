@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from blog.views import IndexView, TagView,CategoryView,TagDetailView,CategoryDetailView,BlogDetailView
 from comment.views import AddCommet
+from django.views import static ##新增
+from django.conf import settings ##新增
+from django.conf.urls import url ##新增
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
@@ -26,4 +29,5 @@ urlpatterns = [
     path('category/<categoryDetail>', CategoryDetailView.as_view(), name='categoryDetail'),
     path('blog/<blogDetail>', BlogDetailView.as_view(), name='blogDetail'),
     path('add_comment/<add_comment>', AddCommet.as_view(), name='add_comment'),
+    url(r'static/(?P<path>.*)$', static.serve, {'document_root': settings.STATIC_ROOT}, name='static'),
 ]
